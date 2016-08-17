@@ -41,7 +41,6 @@ export default class Article extends Component {
   }
 
   _onSubmit() {
-    alert("xxxxx");
     request.post('/api/article')
       .send({
         title: this.state.title,
