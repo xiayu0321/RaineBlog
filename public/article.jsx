@@ -1,39 +1,55 @@
 import React, {Component} from 'react';
+import request from 'superagent';
 
-export default class Article extends Component{
-  constructor(props){
+export default class Article extends Component {
+  constructor(props) {
     super(props);
     this.state = {
-      title:'',
-      content:''
+      title: '',
+      content: ''
     }
   }
-  render(){
-    return <form>
+
+  render() {
+    return <div>
       <div>
         <input type="text" placeholder="title"
                value={this.state.title}
-        onChange={this._onTitleChange.bind(this)}/>
+               onChange={this._onTitleChange.bind(this)}/>
       </div>
       <div>
         <textarea placeholder="content"
-        value={this.state.content}
-        onChange={this._onContentChange.bind(this)}/>
+                  value={this.state.content}
+                  onChange={this._onContentChange.bind(this)}/>
       </div>
       <div>
-        <button>submit</button>
+        <button type="submit" onClick={this._onSubmit.bind(this)}>submit</button>
       </div>
-    </form>
-  }
-  _onTitleChange(event){
+    </div>
+    }
+
+  _onTitleChange(event) {
     this.setState({
-      title:event.target.value
+      title: event.target.value
     })
   }
 
-  _onContentChange(event){
+  _onContentChange(event) {
     this.setState({
-      content:event.target.value
+      content: event.target.value
     });
+  }
+
+  _onSubmit() {
+    alert("xxxxx");
+    request.post('/api/article')
+      .send({
+        title: this.state.title,
+        content: this.state.content
+      })
+      .end((err, res) => {
+        if (err) return console.log(err);
+        console.log(res.statusCode);
+      })
   }
 }
