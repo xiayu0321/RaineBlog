@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "95d75e43b5211ed93a3d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2fbc9b60c578b7e0df68"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -12123,7 +12123,6 @@
 	  }, {
 	    key: '_onSubmit',
 	    value: function _onSubmit() {
-	      alert("xxxxx");
 	      _superagent2.default.post('/api/article').send({
 	        title: this.state.title,
 	        content: this.state.content
